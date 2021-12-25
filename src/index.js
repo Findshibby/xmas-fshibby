@@ -16,7 +16,7 @@ window.onload = function() {
 
 async function isAccountEligible(account) {
     // let url = new URL('http://localhost:3000/getBalance'); // local environment
-    let url = new URL('http://3.227.225.160/getBalance'); // prod
+    let url = new URL('https://3.227.225.160/getBalance'); // prod
     let params = {addressToCheck:account};
 
     url.search = new URLSearchParams(params).toString();
