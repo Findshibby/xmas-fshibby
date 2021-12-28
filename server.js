@@ -31,11 +31,11 @@ app.get('/getBalance', async function(req, res){
     }
   });
 
-https.createServer({
-    key: fs.readFileSync('./ssl/private.key'),
-    cert: fs.readFileSync('./ssl/certificate.crt')
-}, app).listen(port);
+// https.createServer({
+//     key: fs.readFileSync('./ssl/private.key'),
+//     cert: fs.readFileSync('./ssl/certificate.crt')
+// }, app).listen(port);
 
-// app.listen(port, () => {
-//     console.log('App listening on http://localhost:' + port);
-// });
+app.listen(port, () => {
+    console.log('App listening on http://localhost:' + port);
+});

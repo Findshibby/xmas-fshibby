@@ -9,14 +9,14 @@ window.onload = function() {
         }
     });
 
-    document.getElementById("eligible-link").style.display = 'none';
-    document.getElementById("eligible-link-step").style.display = 'none';
+    // document.getElementById("eligible-link").style.display = 'none';
+    // document.getElementById("eligible-link-step").style.display = 'none';
     document.getElementById("buy-fshibby").style.display = 'none';
 };
 
 async function isAccountEligible(account) {
-    // let url = new URL('http://localhost:3000/getBalance'); // local environment
-    let url = new URL('https://3.227.225.160/getBalance'); // prod
+    let url = new URL('http://localhost:8080/getBalance'); // local environment
+    // let url = new URL('https://3.227.225.160/getBalance'); // prod
     let params = {addressToCheck:account};
 
     url.search = new URLSearchParams(params).toString();
