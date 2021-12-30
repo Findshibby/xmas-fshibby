@@ -43,12 +43,12 @@ async function getAccount() {
     let allowSignUp = await isAccountEligible(account);
 
     if (allowSignUp.isEligible) {
-        document.querySelector(".sweep-link").href = allowSignUp.sweepLink;
         document.getElementById("eligible-link").style.display = 'block';
         document.getElementById("eligible-link-step").style.display = 'block';
-    } else {
         document.querySelector(".sweep-link").href = allowSignUp.sweepLink;
+    } else {
         document.getElementById("buy-fshibby").style.display = 'block';
+        document.querySelector(".buy-fshibby-link").href = allowSignUp.sweepLink;
     }
 };
 
