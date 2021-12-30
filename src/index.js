@@ -1,17 +1,23 @@
 window.onload = function() {
+    document.getElementById("eligible-link").style.display = 'none';
+    document.getElementById("eligible-link-step").style.display = 'none';
+    document.getElementById("buy-fshibby").style.display = 'none';
+
     const ethereumButton = document.querySelector('.enableEthereumButton');
 
-    ethereumButton.addEventListener('click', () => {
+    ethereumButton.addEventListener('click', async () => {
         if (typeof window.ethereum !== 'undefined') {
-            getAccount();
+            await getAccount();
+            document.querySelector('.stepOneText').classList.add('stepDone');
+            ethereumButton.classList.add('connectedEthereumButton');
+            ethereumButton.innerText = 'Wallet Connected!';
+            document.querySelector('.steps').classList.remove('stepsBackgroundFirstStep');
+            document.querySelector('.steps').classList.add('stepsBackgroundSecondStep');
         } else {
             alert('Please install MetaMask');
         }
     });
 
-    // document.getElementById("eligible-link").style.display = 'none';
-    // document.getElementById("eligible-link-step").style.display = 'none';
-    document.getElementById("buy-fshibby").style.display = 'none';
 };
 
 async function isAccountEligible(account) {
@@ -32,6 +38,8 @@ async function getAccount() {
     const account = accounts[0];
     showAccount.innerHTML = account;
 
+    
+
     let allowSignUp = await isAccountEligible(account);
 
     if (allowSignUp.isEligible) {
@@ -44,21 +52,3 @@ async function getAccount() {
     }
 };
 
-
-// https://pancakeswap.finance/swap?outputCurrency=0x9a21477b4e9ea5f7946d75876a186a1194559828
-// https://sweepwidget.com/view/45130-z7wiqt1j
-//   //Smart contract functions
-//   function registerSetInfo() {
-//     info = $("#newInfo").val();
-//     contract.methods.setInfo (info).send( {from: account}).then( function(tx) {
-//       console.log("Transaction: ", tx);
-//     });
-//     $("#newInfo").val('');
-//   }
-  
-//   function registerGetInfo() {
-//     contract.methods.getInfo().call().then( function( info ) {
-//       console.log("info: ", info);
-//       document.getElementById('lastInfo').innerHTML = info;
-//     });
-//   }
