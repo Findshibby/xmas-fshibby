@@ -3,6 +3,8 @@ window.onload = function() {
     document.getElementById("eligible-link-step").style.display = 'none';
     document.getElementById("buy-fshibby").style.display = 'none';
 
+    const modal = document.getElementById("no-metamask");
+    const span = document.getElementsByClassName("close-modal")[0];
     const ethereumButton = document.querySelector('.enableEthereumButton');
 
     ethereumButton.addEventListener('click', async () => {
@@ -14,15 +16,25 @@ window.onload = function() {
             document.querySelector('.steps').classList.remove('stepsBackgroundFirstStep');
             document.querySelector('.steps').classList.add('stepsBackgroundSecondStep');
         } else {
-            alert('Please install MetaMask');
+            modal.style.display = "block";
         }
     });
 
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 };
+
 
 async function isAccountEligible(account) {
     // let url = new URL('http://localhost:8080/getBalance'); // local environment
-    let url = new URL('https://xmas-fshibby-vg5sg.ondigitalocean.app/getBalance'); // prod
+    let url = new URL('https://win.findshibby.cash/getBalance'); // prod
     let params = {addressToCheck:account};
 
     url.search = new URLSearchParams(params).toString();
