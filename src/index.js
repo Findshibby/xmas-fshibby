@@ -34,7 +34,7 @@ window.onload = function() {
 
 async function isAccountEligible(account) {
     // let url = new URL('http://localhost:8080/getBalance'); // local environment
-    let url = new URL('https://xmas-fshibby-vg5sg.ondigitalocean.app/getBalance'); // prod
+    let url = new URL('https://win.findshibby.cash/getBalance'); // prod
     let params = {addressToCheck:account};
 
     url.search = new URLSearchParams(params).toString();
